@@ -14,6 +14,7 @@ import './css/c3.css'
 require('bootstrap')
 import React from 'react'
 import ReactDOM from 'react-dom'
+import HomeView from './app/HomeView/HomeView.jsx'
 import MainView from './app/MainView.jsx'
 import { Router, Route, Link, hashHistory, IndexRedirect} from 'react-router'
 
