@@ -10,7 +10,6 @@ export default class MainView extends React.Component {
   render() {
     return(
       <div className="MainView">
-        <HomeView/>
         {this.props.children}
       </div>
     )
