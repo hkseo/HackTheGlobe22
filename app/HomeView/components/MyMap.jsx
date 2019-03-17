@@ -27,18 +27,27 @@ export default class MyMap extends React.Component{
 
         function onMapClick(e) {
             var symbol = L.icon({ iconUrl: 'water.png', iconSize: [30, 30] });
-            if (count > 1 && count < 3) {
+            if (count <= 1 && count > -1) {
+                L.marker([e.latlng.lat, e.latlng.lng], { icon: symbol }).addTo(map);
+            }
+            else if (count == 2) {
                 symbol = L.icon({ iconUrl: 'food.png', iconSize: [30, 30] });
+                L.marker([e.latlng.lat, e.latlng.lng], { icon: symbol}).addTo(map);
             }
-            else if (count > 8) {
+            else if (count == 3) {
                 symbol = L.icon({ iconUrl: 'shelter.png', iconSize: [30, 30] })
+                L.marker([e.latlng.lat, e.latlng.lng], { icon: symbol }).addTo(map);
             }
-            if (count > 12) {
-                count = -1
+            else {
+                L.circle([e.latlng.lat, e.latlng.lng], {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.5,
+                    radius: 500
+                }).addTo(map);
+                count = -1;
             }
 
-            L.marker([e.latlng.lat, e.latlng.lng], { icon: symbol}).addTo(map);
-            
             popup
                 .setLatLng(e.latlng)
                 .setContent("Click settings below the Aid Deployment section to fill out the form")
