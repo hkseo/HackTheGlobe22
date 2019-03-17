@@ -27,7 +27,7 @@ export default class MyMap extends React.Component{
 
         function onMapClick(e) {
             var symbol = L.icon({ iconUrl: 'water.png', iconSize: [30, 30] });
-            if (count > 4 && count < 8) {
+            if (count > 1 && count < 3) {
                 symbol = L.icon({ iconUrl: 'food.png', iconSize: [30, 30] });
             }
             else if (count > 8) {
@@ -41,7 +41,7 @@ export default class MyMap extends React.Component{
             
             popup
                 .setLatLng(e.latlng)
-                .setContent("Click Requested on the right side to fill out the form")
+                .setContent("Click settings below the Aid Deployment section to fill out the form")
                 .openOn(map);
             count += 1;
         }

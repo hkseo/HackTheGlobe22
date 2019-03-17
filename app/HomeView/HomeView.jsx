@@ -12,7 +12,7 @@ require('./stylesheets/HomeView.sass')
 const LegendsPanel = (
     <div className="LegendsPanelTitle">
         <h4>Aid Deployment</h4>
-        <ConfigModal />
+        <FormContainer />
     </div>
 )
 
@@ -53,7 +53,6 @@ export default class HomeView extends React.Component {
                         <button type="button" class="btn btn-danger">All</button>
                         <button type="button" class="btn btn-success">Deployed</button>
                         <button type="button" class="btn btn-warning">Requested</button>
-                        <FormContainer/>
                     <br />
                     <br />
 
@@ -61,7 +60,6 @@ export default class HomeView extends React.Component {
                         <button type="button" class="btn btn-danger">All</button>
                         <button type="button" class="btn btn-success">Deployed</button>
                         <button type="button" class="btn btn-warning">Requested</button>
-                        <FormContainer />
                     <br />
                     <br />
 
@@ -69,7 +67,6 @@ export default class HomeView extends React.Component {
                         <button type="button" class="btn btn-danger">All</button>
                         <button type="button" class="btn btn-success">Deployed</button>
                         <button type="button" class="btn btn-warning">Requested</button>
-                        <FormContainer />
                     <br />
                     <br />
                 </Panel>
