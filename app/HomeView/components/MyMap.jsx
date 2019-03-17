@@ -1,11 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import L from 'leaflet'
-//import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 
-export default class MyMap extends React.Component {
+export default class MyMap extends React.Component{
+
 	constructor(props) {
         super(props)
+        this.state = {
+            icon: "water",
+            lat: 43.783,
+            lng: -79.466
+        }
     }
     
     componentDidMount() {
@@ -18,30 +23,35 @@ export default class MyMap extends React.Component {
 
         var popup = L.popup();
         this.setState({ resource: 1 });
+        var count = 0;
 
         function onMapClick(e) {
             var symbol = L.icon({ iconUrl: 'water.png', iconSize: [30, 30] });
-            //if (this.state.resource == 1) {
-            //    symbol = L.icon({ iconUrl: 'food.png', iconSize: [30, 30] });
-            //}
-            //else if (this.state.resource == 2) {
-            //    symbol = L.icon({ iconUrl: 'shelter.png', iconSize: [30, 30] })
-            //}
+            if (count > 4 && count < 8) {
+                symbol = L.icon({ iconUrl: 'food.png', iconSize: [30, 30] });
+            }
+            else if (count > 8) {
+                symbol = L.icon({ iconUrl: 'shelter.png', iconSize: [30, 30] })
+            }
+            if (count > 12) {
+                count = -1
+            }
 
             L.marker([e.latlng.lat, e.latlng.lng], { icon: symbol}).addTo(map);
             
             popup
                 .setLatLng(e.latlng)
-                .setContent("You clicked the map at " + e.latlng.toString())
+                .setContent("Click Requested on the right side to fill out the form")
                 .openOn(map);
+            count += 1;
         }
         map.on('click', onMapClick);
     }
 
     render() {
-		return(
-			<div id="map">
-			</div>
-		);
-	}
+        return(
+        	<div id="map">
+        	</div>
+        );
+    }
 }
